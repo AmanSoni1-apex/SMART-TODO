@@ -1,0 +1,85 @@
+# PROJECT STRUCTURE DOCUMENTATION
+
+📁 controller/
+- Contains REST API controllers Handles HTTP requests and maps them to functions.
+It’s the layer that interacts directly with the frontend or API consumers.
+- Example: TodoController.java defines endpoints for CRUD operations.{
+
+    
+File: TodoController.java
+Defines API endpoints like:
+GET /api/todos → list all todos
+POST /api/todos → create a todo
+PUT /api/todos/{id} → update a todo
+DELETE /api/todos/{id} → delete a todo
+Uses @RestController and @RequestMapping
+}
+
+
+📁 model/
+- Contains entity classes that map to database tables.(Contains your data models (entities).
+Each model represents a table in your database.)
+- Example: Todo.java represents a single task in the app.{
+
+    
+File: Todo.java
+Annotated with @Entity
+Has fields like id, title, description, completed, createdAt, etc.
+Maps to a DB table automatically via JPA.
+}
+
+
+📁 repository/
+- Handles database operations via Spring Data JPA (Responsible for database operations (CRUD).
+You don’t need to write SQL manually — JPA handles it).
+- Example: TodoRepository.java provides CRUD methods.{
+
+    File: TodoRepository.java
+Extends JpaRepository<Todo, Long>
+Gives you methods like:
+findAll()
+findById(id)
+save(todo)
+deleteById(id)
+}
+
+📁 service/
+- Contains business logic between controller and repository.
+- Example: TodoService.java handles operations like sorting or validation.{
+
+    File: TodoService.java
+Handles logic like validation, filtering, and complex operations.
+Makes calls to TodoRepository.
+Keeps your controllers clean.
+}
+
+📁 exception/
+- Defines custom exceptions and a global exception handler.
+- Helps send clean JSON responses instead of default error pages.{
+
+    File: TodoService.java
+Handles logic like validation, filtering, and complex operations.
+Makes calls to TodoRepository.
+Keeps your controllers clean.
+}
+
+📁 config/
+- Holds configuration classes like CORS, WebSocket, etc.
+- Example: WebConfig.java enables cross-origin support.{
+
+    File: WebConfig.java
+Configures CORS (cross-origin access) if you build a frontend later.
+Can register interceptors, formatters, etc.
+}
+
+📁 resources/
+- Contains configuration files (application.yml), static assets, and templates.
+
+📁 test/
+- Contains JUnit test classes for integration and unit testing.
+
+📄 pom.xml
+- Maven configuration file listing dependencies and plugins.
+
+📄 TodoApplication.java
+- Main entry point that bootstraps the Spring Boot app.
