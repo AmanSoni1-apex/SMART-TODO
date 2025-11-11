@@ -1,6 +1,7 @@
 package com.todo.smart_todo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 import com.todo.smart_todo.service.TodoService;
+
+import jakarta.validation.Valid;
+
 import com.todo.smart_todo.model.Todo;
 
 
@@ -29,14 +33,16 @@ public class TodoController {
     }
 
     // get a todo by its id
-    @GetMapping("{id}")
-    public Optional<Todo> getTodoByid(@PathVariable Long id){ // we use the @PathVariable so the spirng boot automaticcally look at the url ,finds the value inside the {id} and passess it to the method
-        return todoService.getTodoById(id);
-    }
+ @GetMapping("{id}")
+public ResponseEntity<Todo> getTodoByid(@PathVariable Long id) { // we use the "@PathVariable" so the spirng boot automaticcally look at the url ,finds the value inside the {id} and passess it to the method
+    return todoService.getTodoById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build()); 
+    // Java 8+ lambda features is called a method reference operator, It’s a shortcut to refer to a method without calling it immediately. "Hey Java, whenever you get an input, just use this method to process it — don’t call it right now, just remember it"
+}
+
 
     @PostMapping
-    public Todo saveTodos(@RequestBody Todo todo)  // here the "Todo" is used when we are dealing with the single todo item like saving a todo by its id or fetching a todo by its id. that why we done this "public Todo saveTodo...."
-    {
+    public Todo saveTodos(@Valid @RequestBody Todo todo)  // The @Valid annotation in Spring Boot is used for input validation — to make sure that the data coming from the client follows the rules
+    {    
         return todoService.saveTodo(todo);
     }
 
@@ -48,10 +54,10 @@ public class TodoController {
     }
 
     @PutMapping
-    public Todo updateTodo(@RequestBody Todo todo){
+    public Todo updateTodo(@Valid @RequestBody Todo todo)
+    {
         return todoService.saveTodo(todo);
     }
-
 
 
     @GetMapping("/status/{completed}")
@@ -64,15 +70,6 @@ public class TodoController {
     {
         return todoService.searchTodos(keyword);
     }
-
-
-
-
-
-
-
-
-
 
 
 }

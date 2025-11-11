@@ -1,10 +1,12 @@
 package com.todo.smart_todo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity  //Marks this class as a database table.
 @Table(name = "todos")
@@ -19,8 +21,11 @@ public class Todo {
     private Long Id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Title cannot be empty")
+    @Size(max = 100, message = "Title cannot exceed 100 characters")
     private String title;
 
+    @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
 
     private boolean completed;
