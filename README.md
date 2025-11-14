@@ -214,8 +214,24 @@ it understands the person behind those tasks.
 
 ----------------------------------------------
 
-🧑‍💻 Author :- 
+🤝 Suggestions & Contributions :-
+-
 
+Suggestions, improvements, and new ideas are always welcome!
+If you find an issue, have a feature request, or want to contribute code, feel free to:
+
+Open an Issue
+
+Create a Pull Request
+
+Share feedback to improve the project
+
+Your contributions will help this project grow and become more polished. 🚀
+
+----------------------------------------------
+
+🧑‍💻 Author :- 
+-
 Aman Soni 🌞
 
  Java Backend Developer (Spring Boot)
