@@ -1,5 +1,5 @@
-package com.todo.smart_todo.model;
-
+package com.todo.smart_todo.entity;
+ 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -28,6 +28,10 @@ public class Todo {
     @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
 
-    private boolean completed;
+    private boolean completed=false;
 
-}
+    @Column(length=20)
+    private String emotion;
+
+}   
+

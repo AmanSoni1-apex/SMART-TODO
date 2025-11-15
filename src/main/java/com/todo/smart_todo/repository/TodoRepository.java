@@ -1,6 +1,7 @@
 package com.todo.smart_todo.repository;
 
-import com.todo.smart_todo.model.Todo;
+import com.todo.smart_todo.entity.Todo;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

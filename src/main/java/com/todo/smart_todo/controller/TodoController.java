@@ -15,7 +15,8 @@ import com.todo.smart_todo.service.TodoService;
 
 import jakarta.validation.Valid;
 
-import com.todo.smart_todo.model.Todo;
+import com.todo.smart_todo.entity.Todo;
+
 
 
 @RestController
