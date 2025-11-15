@@ -18,7 +18,7 @@ public class Todo {
 
     @Id //Primary key.
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto-generates the ID.
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     @NotBlank(message = "Title cannot be empty")
