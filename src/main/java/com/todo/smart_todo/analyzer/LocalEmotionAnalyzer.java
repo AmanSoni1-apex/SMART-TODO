@@ -13,7 +13,7 @@ public class LocalEmotionAnalyzer implements EmotionAnalyzer{
     );
 
     private static final List<String> NEGATIVE_KEYWORDS = List.of(
-        "sad","depressed","unhapppy","down","disappointed","bad","terrible","fail","failed"
+        "sad","depressed","unhappy","down","disappointed","bad","terrible","fail","failed"
     ); 
 
     private static final List<String> ANGRY_KEYWORD = List.of(

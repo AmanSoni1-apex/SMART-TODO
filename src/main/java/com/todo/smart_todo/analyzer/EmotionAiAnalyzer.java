@@ -19,7 +19,7 @@ public class EmotionAiAnalyzer implements EmotionAnalyzer {
             return "positive";
         }
 
-        // Simple negation heuristics
+        // negation heuristics
         if (lower.contains("not") || lower.contains("never") || lower.contains("can't") || lower.contains("cannot")) {
             return "negative";
         }
